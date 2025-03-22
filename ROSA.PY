@@ -9,6 +9,7 @@ import datetime
 from bs4 import BeautifulSoup
 from gtts import gTTS
 from playsound import playsound
+from token_tmdb import API_KEY_TMDB
 
 # função cria audio da IA
 def rosa_audio(audio, text, lang = "pt-br"):
@@ -27,7 +28,7 @@ def rosa_ouvir():
 
     with mic as fonte:
         r.adjust_for_ambient_noise(fonte) 
-        print("Fale alguma coisa ")
+        print("Esperando resposta ")
         audios = r.listen(fonte)
         print("Enviado para reconhecimento")
         
@@ -80,10 +81,23 @@ def cotacao(moeda):
 
 # filmes lançamento 
 def filmes():
-    print("filmes em lançamento") # parei aqui 
+    requisicao = requests.get("https://api.themoviedb.org/3/movie/upcoming?api_key=" + API_KEY_TMDB + "&language=pt-BR")
+    dataJSON = requisicao.json()
+    dataFormat = json.dumps(dataJSON, indent=1, ensure_ascii=False)
     
+    filmes_lista = []
     
+    if "results" in dataFormat:
+        titulo = dataFormat["title"]
+        data_lancamento = dataFormat["release_date"]
+        filmes_lista.append(titulo, data_lancamento)
+        rosa_audio("filmes.mp3", "filmes em lançamento " + titulo + "em" + data_lancamento + "")
+    else:
+        print("nenhum filme encontrado")
 
+    
+    
+    
 # executa commandos função
 
 def executa_comando(text):
