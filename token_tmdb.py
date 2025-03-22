@@ -1,1 +1,1 @@
-API_KEY_TMDB = "c1c491d5efa464f2ce07acd1a45e0cce"
+API_KEY_TMDB = <sua chave>
