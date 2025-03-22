@@ -4,7 +4,7 @@ url = "https://api.themoviedb.org/3/authentication"
 
 headers = {
     "accept": "application/json",
-    "Authorization": <chave de cebechalho>
+    "Authorization": <seu cabesalho>
 }
 
 response = requests.get(url, headers=headers)

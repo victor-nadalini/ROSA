@@ -83,17 +83,21 @@ def cotacao(moeda):
 def filmes():
     requisicao = requests.get("https://api.themoviedb.org/3/movie/upcoming?api_key=" + API_KEY_TMDB + "&language=pt-BR")
     dataJSON = requisicao.json()
-    dataFormat = json.dumps(dataJSON, indent=1, ensure_ascii=False)
+    # dataFormat = json.dumps(dataJSON, indent=1, ensure_ascii=False)
     
-    filmes_lista = []
-    
-    if "results" in dataFormat:
-        titulo = dataFormat["title"]
-        data_lancamento = dataFormat["release_date"]
-        filmes_lista.append(titulo, data_lancamento)
-        rosa_audio("filmes.mp3", "filmes em lançamento " + titulo + "em" + data_lancamento + "")
-    else:
-        print("nenhum filme encontrado")
+    if "results" in dataJSON:
+        filmes_lista = []
+        
+    for filme in dataJSON["results"]:
+        if "title" in filme and "release_date" in filme:
+            titulo = dataJSON["title"]
+            data_lancamento = dataJSON["release_date"]
+            
+            filmes_lista.append((titulo, data_lancamento))
+            
+            rosa_audio("filmes.mp3", "filmes em lançamento " + titulo + "em" + data_lancamento + "")
+        else:
+            print("nenhum filme encontrado")
 
     
     
