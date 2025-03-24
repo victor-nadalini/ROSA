@@ -83,25 +83,23 @@ def cotacao(moeda):
 def filmes():
     requisicao = requests.get("https://api.themoviedb.org/3/movie/upcoming?api_key=" + API_KEY_TMDB + "&language=pt-BR")
     dataJSON = requisicao.json()
-    # dataFormat = json.dumps(dataJSON, indent=1, ensure_ascii=False)
+    dataFormat = json.dumps(dataJSON, indent=1, ensure_ascii=False)
+    # print(dataFormat) # VER SE ESTA ESCRITO CERTO TITLE
     
-    if "results" in dataJSON:
-        filmes_lista = []
-        
-    for filme in dataJSON["results"]:
-        if "title" in filme and "release_date" in filme:
-            titulo = dataJSON["title"]
-            data_lancamento = dataJSON["release_date"]
+    filmes_lista = []
+    
+    for filme in dataJSON("results", []): # erro muito possivelmente esta aqui deve ter haver com a tupla () = []
+            titulo = filme.get("title", "Título não disponível")
+            data_lancamento = filme.get("release_date", "Data não disponível")
+            filmes_lista.append(titulo, data_lancamento)
             
-            filmes_lista.append((titulo, data_lancamento))
+            # o erro atual tem haver com não estar acessando o dicionario com o [] mas com ()
+            # so tenho que saber aonde esta sendo acessado errado
             
-            rosa_audio("filmes.mp3", "filmes em lançamento " + titulo + "em" + data_lancamento + "")
-        else:
-            print("nenhum filme encontrado")
-
-    
-    
-    
+    if not filmes_lista:
+        print("nenhum filme encontrado")
+    else:
+        rosa_audio("filmes.mp3", "filmes em lançamento " + titulo + "em" + data_lancamento + "")
 # executa commandos função
 
 def executa_comando(text):
