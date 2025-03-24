@@ -88,17 +88,15 @@ def filmes():
     
     filmes_lista = []
     
-    for filme in dataJSON("results", []): # erro muito possivelmente esta aqui deve ter haver com a tupla () = []
+    for filme in dataJSON.get("results", []):
             titulo = filme.get("title", "Título não disponível")
             data_lancamento = filme.get("release_date", "Data não disponível")
-            filmes_lista.append(titulo, data_lancamento)
-            
-            # o erro atual tem haver com não estar acessando o dicionario com o [] mas com ()
-            # so tenho que saber aonde esta sendo acessado errado
+            filmes_lista.append((titulo, data_lancamento))
             
     if not filmes_lista:
         print("nenhum filme encontrado")
     else:
+        titulo, data_lancamento = filmes_lista[0]
         rosa_audio("filmes.mp3", "filmes em lançamento " + titulo + "em" + data_lancamento + "")
 # executa commandos função
 
