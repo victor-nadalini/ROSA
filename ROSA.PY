@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 from gtts import gTTS
 from playsound import playsound
 from token_tmdb import API_KEY_TMDB
+from token_openwheather import API_KEY_CLIMA
 
 # função cria audio da IA
 def rosa_audio(audio, text, lang = "pt-br"):
@@ -84,7 +85,7 @@ def filmes():
     requisicao = requests.get("https://api.themoviedb.org/3/movie/upcoming?api_key=" + API_KEY_TMDB + "&language=pt-BR")
     dataJSON = requisicao.json()
     dataFormat = json.dumps(dataJSON, indent=1, ensure_ascii=False)
-    # print(dataFormat) # VER SE ESTA ESCRITO CERTO TITLE
+    # print(dataFormat) 
     
     filmes_lista = []
     
@@ -99,6 +100,21 @@ def filmes():
         titulo, data_lancamento = filmes_lista[0]
         rosa_audio("filmes.mp3", "filmes em lançamento " + titulo + "em" + data_lancamento + "")
 # executa commandos função
+
+# clima
+def clima():
+    requisicao = requests.get("https://api.openweathermap.org/data/2.5/weather?q=Sao Paulo&appid=" + API_KEY_CLIMA + "&lang=pt_br")
+    dataJSON = requisicao.json()
+    # dataFormat = json.dumps(dataJSON, indent=1, ensure_ascii=False)
+    #print(dataFormat)
+    if dataJSON.get("cod") == 200:
+        temp = dataJSON["main"]["temp"] - 273.15 
+        desc = dataJSON["weather"][0]["description"]
+        
+        rosa_audio("clima.mp3", "em sao paulo esta " + str(temp) + "graus e " + desc)
+    else:
+        print("não foi possivel obter as informações do clima")
+        rosa_audio("erro_clima.mp3", "não foi possivel obter as informações do clima")
 
 def executa_comando(text):
     
@@ -176,6 +192,10 @@ def executa_comando(text):
     
     elif "filmes em lançamento" in text:
         filmes()
+    
+    # clima
+    elif "clima" in text:
+        clima()
     
 # fim da função
     

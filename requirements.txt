@@ -1,0 +1,6 @@
+SpeechRecognition==3.10.0
+beautifulsoup4==4.12.2
+gTTS==2.3.2
+playsound==1.2.2
+requests==2.31.0
+lxml==4.9.3 
