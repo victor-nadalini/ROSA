@@ -11,6 +11,9 @@ from gtts import gTTS
 from playsound import playsound
 from token_tmdb import API_KEY_TMDB
 from token_openwheather import API_KEY_CLIMA
+from tkinter import *
+from tkinter import ttk
+from googletrans import LANGUAGES, Translator
 
 # função cria audio da IA
 def rosa_audio(audio, text, lang = "pt-br"):
@@ -116,6 +119,27 @@ def clima():
         print("não foi possivel obter as informações do clima")
         rosa_audio("erro_clima.mp3", "não foi possivel obter as informações do clima")
 
+# tradutor 
+def traduzir(texto):
+    try:
+        # Remove a palavra "traduza" do texto
+        texto = texto.replace("traduza", "").strip()
+        
+        # Cria o tradutor
+        tradutor = Translator()
+        
+        # Detecta o idioma do texto e traduz para português
+        traducao = tradutor.translate(texto, dest='pt')
+        
+        # Fala a tradução
+        rosa_audio("traducao.mp3", f"A tradução é: {traducao.text}")
+        
+    except Exception as e:
+        print(f"Erro na tradução: {e}")
+        rosa_audio("erro_traducao.mp3", "Desculpe, não consegui traduzir o texto")
+    
+# calculadora
+
 def executa_comando(text):
     
     text = text.lower()
@@ -196,6 +220,10 @@ def executa_comando(text):
     # clima
     elif "clima" in text:
         clima()
+    
+    # tradutor
+    elif "traduza" in text:
+        traduzir()
     
 # fim da função
     
