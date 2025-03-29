@@ -60,7 +60,7 @@ def noticias():
     for item in noticias.findAll('item')[:5]:
         text = item.title.text
         noticias_lista.append(text)
-    rosa_audio("news.mp3", text)    
+    rosa_audio("news.mp3", text)
     
 # fim da função
 
@@ -120,25 +120,23 @@ def clima():
         rosa_audio("erro_clima.mp3", "não foi possivel obter as informações do clima")
 
 # tradutor 
-def traduzir(texto):
-    try:
-        # Remove a palavra "traduza" do texto
-        texto = texto.replace("traduza", "").strip()
-        
-        # Cria o tradutor
+def traduzir(text):
+    try:        
+        text = text.replace("traduza", "").strip()
+
         tradutor = Translator()
         
-        # Detecta o idioma do texto e traduz para português
-        traducao = tradutor.translate(texto, dest='pt')
-        
-        # Fala a tradução
+        traducao = tradutor.translate(text, dest='pt')
+         
         rosa_audio("traducao.mp3", f"A tradução é: {traducao.text}")
         
     except Exception as e:
-        print(f"Erro na tradução: {e}")
+        print(f"Erro detalhado na tradução: {str(e)}")  # Debug mais detalhado
         rosa_audio("erro_traducao.mp3", "Desculpe, não consegui traduzir o texto")
     
 # calculadora
+def calculadora(text):
+    print("calculando...") # parei aqui
 
 def executa_comando(text):
     
@@ -223,13 +221,17 @@ def executa_comando(text):
     
     # tradutor
     elif "traduza" in text:
-        traduzir()
+        traduzir(text)
     
+    # calculadora
+    elif "calcule" in text:
+        calculadora(text)
+        
 # fim da função
     
 # função principal
 def main():
-    rosa_audio("resposta.mp3", "Bom dia meu amigo, do que precisa ? ")
+    rosa_audio("resposta.mp3", "Olá, como posso ajudar voce hoje?")
     
     while True:  # Loop infinito para ouvir e responder
         text = rosa_ouvir()  # Se o usuário falar algo
