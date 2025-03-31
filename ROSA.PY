@@ -244,45 +244,51 @@ def executa_comando(text):
         calculadora(text)
     
     # abri programas
-    elif "abrir" in text and "vscode" in text:
-        subprocess.Popen("code")
+    
+    elif "abrir" in text and "visual studio code" in text:
+        os.system("code")
+        
     elif "abrir" in text and "chrome" in text:
         subprocess.Popen("chrome")
+        
     elif "abrir" in text and "bloco de notas" in text:
         subprocess.Popen("notepad")
-    elif "abrir" in text and "lista de tarefas" in text:
-        subprocess.Popen('"C:/Program Files/WindowsApps/Microsoft.Windows.Taskbar.List.List.exe"')
+        
     elif "abrir" in text and "calculadora" in text:
         subprocess.Popen("calc")
+        
     elif "abrir" in text and "docker" in text:
         subprocess.Popen("docker")
-    elif "abrir" in text and "spotify" in text:
-        subprocess.Popen('"C:/Users/T-GAMER/AppData/Roaming/Spotify/Spotify.exe"')
-    elif "abrir" in text and "whatsapp" in text:
-        subprocess.Popen('"C:/Program Files/WindowsApps/5319275A.WhatsAppDesktop_2.2512.2.0_x64__cv1g1gvanyjgm/WhatsApp.exe"')
-    elif "abrir" in text and "discord" in text:
-        subprocess.Popen("discord")
-    elif "abrir" in text and "figma" in text:
-        subprocess.Popen("figma")
-    elif "abrir" in text and "notion" in text:
-        subprocess.Popen("notion")
-    elif "abrir" in text and "streamlabs" in text:
-        subprocess.Popen("streamlabs")
-    elif "abrir" in text and "hydra" in text:
-        subprocess.Popen("hydrate")
-    elif "abrir" in text and "epic games" in text:
-        subprocess.Popen("epicgameslauncher")
-    elif "abrir" in text and "steam" in text:
-        subprocess.Popen("steam")
-    elif "abrir" in text and "XBOX" in text:
-        subprocess.Popen("xbox")
-    elif "abrir" in text and "notion" in text:
-        subprocess.Popen("notion")
-    elif "abrir" in text and "oracle" in text:
-        subprocess.Popen("oracle")
-    elif "abrir" in text and "opera" in text:
-        subprocess.Popen("opera")
         
+    elif "abrir" in text and "spotify" in text:
+        subprocess.Popen('"C:/Users/T-GAMER/AppData/Roaming/Spotify/Spotify.exe"') 
+        
+    elif "abrir" in text and "discord" in text:
+        subprocess.Popen("C:/Users/T-GAMER/AppData/Local/Discord/app-1.0.9187/Discord.exe")
+        
+    elif "abrir" in text and "desenho" in text: # figma
+        subprocess.Popen("C:/Users/T-GAMER/AppData/Local/Figma/app-125.2.3/Figma.exe")
+        
+    elif "abrir" in text and "notion" in text:
+        subprocess.Popen("C:/Users/T-GAMER/AppData/Local/Programs/Notion/Notion.exe")
+        
+    elif "abrir" in text and "streamlabs" in text:
+        subprocess.Popen("C:/Program Files/Streamlabs OBS/Streamlabs OBS.exe")
+            
+    elif "abrir" in text and "hydra" in text:
+        subprocess.Popen("C:/Users/T-GAMER/AppData/Local/Programs/Hydra/Hydra.exe")
+        
+    elif "abrir" in text and "epic games" in text:
+        subprocess.Popen("C:/Program Files (x86)/Epic Games/Launcher/Portal/Binaries/Win64/EpicGamesLauncher.exe")
+        
+    elif "abrir" in text and "oracle" in text:
+        subprocess.Popen("C:/Program Files/Oracle/VirtualBox/VirtualBox.exe")
+        
+    elif "abrir" in text and "opera" in text:
+        subprocess.Popen("C:/Users/T-GAMER/AppData/Local/Programs/Opera GX/opera.exe")
+        
+    elif "abrir" in text and "gerenciador de tarefas" in text:
+        os.startfile("taskmgr.exe")
         
 # fim da função
     

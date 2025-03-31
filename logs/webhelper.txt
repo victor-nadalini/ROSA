@@ -1,0 +1,19 @@
+
+
+[1969-12-31 21:00:00] Client version: no bootstrapper found
+[1969-12-31 21:00:00] Startup - webhelper launched pid: 19036 commandline: "C:/Program Files (x86)/Steam/bin/cef/cef.win7x64/steamwebhelper.exe"
+[1969-12-31 21:00:00] Browser - launching child process with: "C:\Program Files (x86)\Steam\bin\cef\cef.win7x64\steamwebhelper.exe" --type=gpu-process --user-agent-product="Valve Steam Client" --lang=pt-BR --user-data-dir="C:\Users\T-GAMER\AppData\Local\CEF\User Data" /prefetch:2
+
+
+[1969-12-31 21:00:00] Browser - launching child process with: "C:\Program Files (x86)\Steam\bin\cef\cef.win7x64\steamwebhelper.exe" --type=gpu-process --user-agent-product="Valve Steam Client" --lang=pt-BR --user-data-dir="C:\Users\T-GAMER\AppData\Local\CEF\User Data" /prefetch:2
+
+
+[1969-12-31 21:00:00] Browser - launching child process with: "C:\Program Files (x86)\Steam\bin\cef\cef.win7x64\steamwebhelper.exe" --type=gpu-process --user-agent-product="Valve Steam Client" --lang=pt-BR --user-data-dir="C:\Users\T-GAMER\AppData\Local\CEF\User Data" /prefetch:2
+
+
+[1969-12-31 21:00:00] Browser - launching child process with: "C:\Program Files (x86)\Steam\bin\cef\cef.win7x64\steamwebhelper.exe" --type=gpu-process --user-agent-product="Valve Steam Client" --lang=pt-BR --user-data-dir="C:\Users\T-GAMER\AppData\Local\CEF\User Data" /prefetch:2
+
+
+[1969-12-31 21:00:00] Browser - launching child process with: "C:\Program Files (x86)\Steam\bin\cef\cef.win7x64\steamwebhelper.exe" --type=gpu-process --user-agent-product="Valve Steam Client" --lang=pt-BR --user-data-dir="C:\Users\T-GAMER\AppData\Local\CEF\User Data" /prefetch:2
+[2025-03-31 12:36:35] Browser - launching child process with: "C:\Program Files (x86)\Steam\bin\cef\cef.win7x64\steamwebhelper.exe" --type=gpu-process --disable-gpu-sandbox --use-gl=disabled --gpu-vendor-id=4098 --gpu-device-id=5686 --gpu-sub-system-id=3489666136 --gpu-revision=201 --gpu-driver-version=31.0.21921.1000 --user-agent-product="Valve Steam Client" --lang=pt-BR --user-data-dir="C:\Users\T-GAMER\AppData\Local\CEF\User Data" /prefetch:8
+[2025-03-31 12:36:35] Browser - launching child process with: "C:\Program Files (x86)\Steam\bin\cef\cef.win7x64\steamwebhelper.exe" --type=utility --utility-sub-type=network.mojom.NetworkService --lang=pt-BR --service-sandbox-type=none --user-agent-product="Valve Steam Client" --lang=pt-BR --user-data-dir="C:\Users\T-GAMER\AppData\Local\CEF\User Data" /prefetch:3
