@@ -154,6 +154,33 @@ def calculadora(text):
         print(f"Texto que causou o erro: {text}")
         rosa_audio("erro_calculo.mp3", "Desculpe, não consegui realizar o cálculo")
 
+# função gerar relatorio
+def gerar_relatorio():
+    r = sr.Recognizer()
+    
+    mic = sr.Microphone()
+    
+    with mic as fonte:
+        r.adjust_for_ambient_noise(fonte)
+        rosa_audio("relatorio.mp3", "relatorio iniciado")
+        print("relatorio iniciado")
+        audio = r.listen(fonte)
+        
+        try:
+            text = r.recognize_google(audio, language="pt-BR")
+            print(f"Texto reconhecido: {text}")
+            
+            print("Gerando relatorio")
+            rosa_audio("relatorio.mp3", "Relatorio gerado com sucesso")
+            relatorio = text
+            open("relatorio.txt", "w").write(relatorio)
+                
+        except Exception as e:
+            print(f"Erro ao reconhecer o texto: {e}")
+        
+        
+# fim da função
+
 def executa_comando(text):
     
     text = text.lower()
@@ -243,7 +270,7 @@ def executa_comando(text):
     elif "calcule" in text or "quanto é" in text:
         calculadora(text)
     
-    # abri programas
+    # abrir programas
     
     elif "abrir" in text and "visual studio code" in text:
         os.system("code")
@@ -291,7 +318,31 @@ def executa_comando(text):
         os.startfile("taskmgr.exe")
         
 # fim da função
-    
+
+# abrir jogos
+
+    elif "abrir" in text and "cat quest" in text:
+        os.startfile('"C:/Program Files/Epic Games/CatQuest/Cat Quest.exe"')
+        
+    elif "abrir" in text and "lego marvel super hero" in text:
+        os.startfile("C:/Program Files (x86)/Steam/steamapps/common/LEGO Marvel Super Heroes 2/LEGOMARVEL2_DX11.exe")
+        
+    elif "abrir" in text and "valorant" in text:
+        os.startfile("C:/Riot Games/Riot Client/RiotClientElectron/Riot Client.exe")
+        
+    elif "abrir" in text and "call of duty" in text:
+        print("abrindo melhor jogo do mundo")
+        os.startfile("C:/Program Files (x86)/Steam/steamapps/common/Call of Duty HQ/cod.exe")
+        print("jogo aberto")
+        
+    elif "abrir" in text and "fortnite" in text:
+        os.startfile("C:/Program Files/Epic Games/Fortnite/FortniteGame/Binaries/Win64/FortniteClient-Win64-Shipping.exe")
+# fim da função
+
+# função gerar relatorio
+    elif "sudário" in text: # relatorio
+        gerar_relatorio()
+        
 # função principal
 def main():
     rosa_audio("resposta.mp3", "Olá, como posso ajudar ?")
