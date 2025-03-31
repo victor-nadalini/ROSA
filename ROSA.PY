@@ -14,6 +14,7 @@ from token_openwheather import API_KEY_CLIMA
 from tkinter import *
 from tkinter import ttk
 from googletrans import LANGUAGES, Translator
+import subprocess
 
 # função cria audio da IA
 def rosa_audio(audio, text, lang = "pt-br"):
@@ -136,7 +137,22 @@ def traduzir(text):
     
 # calculadora
 def calculadora(text):
-    print("calculando...") # parei aqui
+    try:
+        text = text.replace("calcule", "").replace("quanto é", "").strip()        
+
+        text = text.replace("mais", "+").replace("menos", "-")
+        text = text.replace("vezes", "*").replace("dividido por", "/")
+
+        text = text.replace("x", "*")            
+
+        resultado = eval(text)
+            
+        rosa_audio("calculo.mp3", f"O resultado é {resultado}")
+        
+    except Exception as e:
+        print(f"Erro no cálculo: {e}")
+        print(f"Texto que causou o erro: {text}")
+        rosa_audio("erro_calculo.mp3", "Desculpe, não consegui realizar o cálculo")
 
 def executa_comando(text):
     
@@ -224,14 +240,55 @@ def executa_comando(text):
         traduzir(text)
     
     # calculadora
-    elif "calcule" in text:
+    elif "calcule" in text or "quanto é" in text:
         calculadora(text)
+    
+    # abri programas
+    elif "abrir" in text and "vscode" in text:
+        subprocess.Popen("code")
+    elif "abrir" in text and "chrome" in text:
+        subprocess.Popen("chrome")
+    elif "abrir" in text and "bloco de notas" in text:
+        subprocess.Popen("notepad")
+    elif "abrir" in text and "lista de tarefas" in text:
+        subprocess.Popen('"C:/Program Files/WindowsApps/Microsoft.Windows.Taskbar.List.List.exe"')
+    elif "abrir" in text and "calculadora" in text:
+        subprocess.Popen("calc")
+    elif "abrir" in text and "docker" in text:
+        subprocess.Popen("docker")
+    elif "abrir" in text and "spotify" in text:
+        subprocess.Popen('"C:/Users/T-GAMER/AppData/Roaming/Spotify/Spotify.exe"')
+    elif "abrir" in text and "whatsapp" in text:
+        subprocess.Popen('"C:/Program Files/WindowsApps/5319275A.WhatsAppDesktop_2.2512.2.0_x64__cv1g1gvanyjgm/WhatsApp.exe"')
+    elif "abrir" in text and "discord" in text:
+        subprocess.Popen("discord")
+    elif "abrir" in text and "figma" in text:
+        subprocess.Popen("figma")
+    elif "abrir" in text and "notion" in text:
+        subprocess.Popen("notion")
+    elif "abrir" in text and "streamlabs" in text:
+        subprocess.Popen("streamlabs")
+    elif "abrir" in text and "hydra" in text:
+        subprocess.Popen("hydrate")
+    elif "abrir" in text and "epic games" in text:
+        subprocess.Popen("epicgameslauncher")
+    elif "abrir" in text and "steam" in text:
+        subprocess.Popen("steam")
+    elif "abrir" in text and "XBOX" in text:
+        subprocess.Popen("xbox")
+    elif "abrir" in text and "notion" in text:
+        subprocess.Popen("notion")
+    elif "abrir" in text and "oracle" in text:
+        subprocess.Popen("oracle")
+    elif "abrir" in text and "opera" in text:
+        subprocess.Popen("opera")
+        
         
 # fim da função
     
 # função principal
 def main():
-    rosa_audio("resposta.mp3", "Olá, como posso ajudar voce hoje?")
+    rosa_audio("resposta.mp3", "Olá, como posso ajudar ?")
     
     while True:  # Loop infinito para ouvir e responder
         text = rosa_ouvir()  # Se o usuário falar algo

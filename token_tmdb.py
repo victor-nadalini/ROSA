@@ -1,1 +1,1 @@
-API_KEY_TMDB = <chave tmdb>
+API_KEY_TMDB = <sua chave filmes>
