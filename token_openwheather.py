@@ -1,1 +1,1 @@
-API_KEY_CLIMA = <chaves de clima>
+API_KEY_CLIMA = <chave clima>
