@@ -1,1 +1,1 @@
-API_KEY_TMDB = <chave filme>
+API_KEY_TMDB = <>
